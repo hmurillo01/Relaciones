@@ -35,3 +35,24 @@ def create (request):
   art3.publications.add(publi3,publi4)
 
   return HttpResponse ("muchos a muchos")
+#Consultamos
+def consulta (resquest,id):
+  post = Publication.objects.get (id=id)
+  post2= Article.objects.get(id=id)
+  #print(f'Publicación:{post.title}, headline:{post2.headline}')
+  return HttpResponse (f"Titulo:{post.title} , headline:{post2.headline}")
+
+#
+def modificar(resquest,id, title):
+  title = "llalalal"
+  post = Publication.objects.get(id=id)
+  post.title =title
+  print(post.title)
+  post.save()
+  return HttpResponse (title)
+
+def eliminar (request, id):
+  post = .objects.get(id=id)
+  post.delete()
+  return HttpResponse ("Post eliminado")
+

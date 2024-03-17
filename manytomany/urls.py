@@ -3,5 +3,7 @@ from . import views
 
 urlpatterns = [
   path ('',views.create, name='create'),
+  path ('consulta/<int:id>',views.consulta, name='consulta'),
+  path ('modificar/<int:id>/<str:title>',views.modificar, name='modificar'),
 
 ]
