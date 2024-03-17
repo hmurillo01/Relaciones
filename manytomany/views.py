@@ -20,19 +20,21 @@ def create (request):
   # art3= Article(headline = "Titular 3")
   # art3.save()
   publi1 = Publication.objects.get(id=1)
-  publi2 = Publication.objects.get(id=1)
-  publi3 = Publication.objects.get(id=1)
-  publi4 = Publication.objects.get(id=1)
+#   publi2 = Publication.objects.get(id=1)
+#   publi3 = Publication.objects.get(id=1)
+#   publi4 = Publication.objects.get(id=1)
 
-  art1= Article.objects.get(id=1)
-  art2= Article.objects.get(id=2)
-  art3= Article.objects.get(id=3)
+  art1= Article.objects.get(id=1) 
+#   art2= Article.objects.get(id=2)
+#   art3= Article.objects.get(id=3)
 
 
-#relaciones
-  art1.publications.add(publi1)
-  art2.publications.add(publi2)
-  art3.publications.add(publi3,publi4)
+# #relaciones
+#   art1.publications.add(publi1)
+#   art2.publications.add(publi2)
+#   art3.publications.add(publi3,publi4)
+
+  art1.publications.remove(publi1)
 
   return HttpResponse ("muchos a muchos")
 #Consultamos
@@ -51,8 +53,10 @@ def modificar(resquest,id, title):
   post.save()
   return HttpResponse (title)
 
+
 def eliminar (request, id):
-  post = .objects.get(id=id)
+  post = Publication.objects.get(id=id)
   post.delete()
   return HttpResponse ("Post eliminado")
+  
 

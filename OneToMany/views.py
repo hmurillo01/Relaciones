@@ -21,3 +21,29 @@ def create(request):
   'repo':repo,
   'query':query
 })
+
+def read (request, id):
+  
+  reporter = Reporter.objects.get(id=id)
+  
+  query = reporter.article_set.all()
+  
+  return render(request, 'onetoone_read.html', {
+    'reporter' : reporter,
+    'query' : query
+  })
+  
+  
+def update(request, id, headline):
+  article = Article.objects.get(id=id)
+  article.headline = headline
+  article.save()
+  
+  return HttpResponse('Datos actualizados correctamente.')
+
+
+def delete(request, id):
+  article = Article.objects.get(id=id)
+  article.delete()
+  
+  return HttpResponse('Registro eliminado correctamente.')
